@@ -2,6 +2,7 @@
 #define WINDOW_H
 
 #include <QWidget>
+#include <QtNetwork>
 
 class QPushButton;
 class Window : public QWidget
@@ -11,8 +12,10 @@ public:
     explicit Window(QWidget *parent = nullptr);
 private slots:
     void slotButtonClicked(bool checked);
+    void slotHttpRequestFinished(QNetworkReply*);
 private:
     QPushButton *m_button;
+    QNetworkAccessManager* m_networkAccessManager;
 
 signals:
 
