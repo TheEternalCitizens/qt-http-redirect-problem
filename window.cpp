@@ -25,6 +25,10 @@ void Window::slotButtonClicked(bool checked)
         QString url = "http://localhost:4567/login";
         QString data = "hello=world";
         QNetworkRequest networkRequest = QNetworkRequest(url);
+        networkRequest.setAttribute(
+            QNetworkRequest::RedirectPolicyAttribute,
+            QNetworkRequest::NoLessSafeRedirectPolicy
+        );
         QNetworkReply *networkReply = m_networkAccessManager->post(networkRequest, data.toUtf8());
     } else {
         m_button->setText("Press to send request");
