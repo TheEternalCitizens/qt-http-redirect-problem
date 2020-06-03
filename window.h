@@ -2,6 +2,7 @@
 #define WINDOW_H
 
 #include <QWidget>
+#include <QComboBox>
 #include <QtNetwork>
 
 class QPushButton;
@@ -13,9 +14,12 @@ public:
 private slots:
     void slotButtonClicked(bool checked);
     void slotHttpRequestFinished(QNetworkReply*);
+    void slotCurrentTextChanged(QString);
 private:
     QPushButton *m_button;
+    QComboBox *m_comboBox;
     QNetworkAccessManager* m_networkAccessManager;
+    QNetworkRequest::RedirectPolicy m_redirectPolicy;
 
 signals:
 
