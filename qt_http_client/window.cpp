@@ -36,19 +36,20 @@ Window::Window(QWidget *parent) : QWidget(parent)
 
 void Window::slotButtonClicked(bool checked)
 {
-    if (checked) {
-        m_button->setText("Sending request");
-        QString url = "http://localhost:4567/login";
-        QString data = "hello=world";
-        QNetworkRequest networkRequest = QNetworkRequest(url);
-        networkRequest.setAttribute(
-            QNetworkRequest::RedirectPolicyAttribute,
-            m_redirectPolicy
-        );
-        QNetworkReply *networkReply = m_networkAccessManager->post(networkRequest, data.toUtf8());
-    } else {
+    if (!checked) {
         m_button->setText("Press to send request");
+        return;
     }
+
+    m_button->setText("Sending request");
+    QString url = "http://localhost:4567/login";
+    QString data = "hello=world";
+    m_networkRequest = QNetworkRequest(url);
+    m_networkRequest.setAttribute(
+        QNetworkRequest::RedirectPolicyAttribute,
+        m_redirectPolicy
+    );
+    m_networkReply = m_networkAccessManager->post(m_networkRequest, data.toUtf8());
 }
 
 

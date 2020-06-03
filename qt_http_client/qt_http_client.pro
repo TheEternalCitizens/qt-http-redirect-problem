@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = minimal-qt
+TARGET = qt_http_client
 
 QT = core gui network
 

@@ -20,6 +20,8 @@ private:
     QComboBox *m_comboBox;
     QNetworkAccessManager* m_networkAccessManager;
     QNetworkRequest::RedirectPolicy m_redirectPolicy;
+    QNetworkRequest m_networkRequest;
+    QNetworkReply *m_networkReply;
 
 signals:
 
