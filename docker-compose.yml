@@ -2,7 +2,6 @@ version: '3.6'
 
 services:
   http_server:
-    command: sleep infinity
     build:
       context: http_server
       target: test
