@@ -1,5 +1,7 @@
 # Qt HTTP `POST` to `GET` Redirect Problem
 
+**TL;DR** Mårten Nordheim from the Qt development team fixed the bug [here](https://bugreports.qt.io/browse/QTBUG-84162).
+
 I'm having a problem getting Qt to follow a `POST` request's redirect to a `GET` request. I have a `POST` endpoint that returns a 302 redirect to a `GET` endpoint, and I find that Qt is unable to do this. What Qt does is make the `POST` request, start the `GET` request, but then fail silently.
 
 This git repository contains the code necessary to reproduce this problem: an http server and a Qt http client. The http server is dockerized, so it's only dependencies are docker and docker-compose. I wrote the Qt http client with Qt version 5.14.2, but I think it's backwards compatible all the way back to Qt version 5.9.
